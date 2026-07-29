@@ -1,5 +1,5 @@
 ---
-description: Security threat-model gate — apply before implementing any new feature (auth, uploads, payments, APIs, forms, webhooks, admin panels, or anything touching user input/data/external services), and re-check after implementation.
+description: Security threat-model gate - apply before implementing any new feature (auth, uploads, payments, APIs, forms, webhooks, admin panels, or anything touching user input/data/external services), and re-check after implementation.
 alwaysApply: false
 ---
 
