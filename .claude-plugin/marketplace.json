@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "preflight",
+  "version": "0.2.0",
+  "description": "Marketplace scaffold for the PreFlight security-preflight process - a Claude Code skill that threat-models a feature before it's built and re-verifies the code after.",
+  "owner": {
+    "name": "Kumuditha Perera"
+  },
+  "plugins": [
+    {
+      "name": "security-preflight",
+      "description": "Runs a security threat-model check before implementing any new feature and a follow-up code re-check after, auto-fixing what's fixable in code and surfacing only what needs the developer.",
+      "version": "0.2.0",
+      "source": ".",
+      "category": "productivity",
+      "keywords": ["security", "threat-model", "code-review", "vulnerability"],
+      "strict": false
+    }
+  ]
+}
