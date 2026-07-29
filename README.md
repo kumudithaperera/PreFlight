@@ -66,3 +66,7 @@ Once in place, the process activates automatically when a matching feature reque
 
 - This is a reasoning-based threat model and code review, not an automated scanner — it evaluates the actual feature and actual code rather than dumping a generic OWASP checklist.
 - `references/project-edge-cases.md` starts empty and accumulates project-specific context the more the process is used.
+
+## License
+
+MIT — see [LICENSE](LICENSE).
