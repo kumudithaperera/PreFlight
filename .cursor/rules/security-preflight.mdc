@@ -1,0 +1,11 @@
+---
+description: Security threat-model gate — apply before implementing any new feature (auth, uploads, payments, APIs, forms, webhooks, admin panels, or anything touching user input/data/external services), and re-check after implementation.
+alwaysApply: false
+---
+
+Before building a feature like this, and again after it's built, follow the PreFlight process in `AGENTS.md` at the repo root (or `PROMPT.md` if `AGENTS.md` isn't present). In short:
+
+1. **Before writing code**: state the attack surface, check it against `references/vulnerability-checklist.md` and `references/project-edge-cases.md`, then silently auto-fix anything code-level (parameterized queries, hashing, cookie flags, IDOR checks, etc.) and produce a priority-ordered checklist of only the items that need a human (new credentials, third-party accounts, infra config). Save the full report to `security-reports/<feature-slug>-preflight.md`. Pause only if a needs-developer item blocks the feature from functioning at all.
+2. **After writing code**: re-open the saved report, verify every auto-fix actually landed, re-check the checklist for what's resolved, and flag anything new the implementation introduced.
+
+Skip this for pure refactors, styling-only changes, or read-only questions.
