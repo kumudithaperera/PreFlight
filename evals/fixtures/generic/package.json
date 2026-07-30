@@ -1,0 +1,9 @@
+{
+  "name": "eval-fixture-generic",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Minimal Express scratch app used as a starting point for PreFlight eval scenarios. Not meant to run - it exists so an agent has a plausible existing codebase to extend.",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

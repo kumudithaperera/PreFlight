@@ -27,7 +27,7 @@ Vibe coders and solo developers move fast and often skip formal security review.
 
 ### See it in action (illustrative)
 
-The transcript below is a hand-written illustration of what a run looks like, not a captured session - a real recorded run will replace this once `evals/` (see below) has some.
+The transcript below is a hand-written illustration of what a run looks like, not a captured session - see `evals/results/2026-07-29-simulated-claude-code/results.md` for real scored runs (per-scenario summaries with quoted code evidence, not full raw transcripts).
 
 > **You:** Add an endpoint so a logged-in user can fetch one of their orders: `GET /api/orders/:id`.
 >
@@ -76,10 +76,12 @@ The same process is packaged in several formats so it works wherever you're codi
 │   ├── vulnerability-checklist.md       # baseline checklist by language/stack, backend/data, and platform/AI risk
 │   ├── free-tier-services.md            # free-tier third-party service suggestions
 │   └── project-edge-cases.md            # learned, project-specific findings (grows over time)
-└── evals/                               # scenario set + rubric for measuring whether this actually works (not yet run)
+└── evals/                               # scenario set + rubric for measuring whether this actually works
     ├── scenarios.md
     ├── RUBRIC.md
-    └── README.md
+    ├── README.md
+    ├── fixtures/                         # scratch codebases the scenarios are run against
+    └── results/2026-07-29-simulated-claude-code/  # first completed run - see "Does it actually work?" below
 ```
 
 ## Installation
@@ -105,7 +107,11 @@ node scripts/build.mjs
 
 ## Does it actually work?
 
-Not yet measured. `evals/` has a scenario set (15 seeded feature requests with known target vulnerabilities, plus 5 negative controls that must not trigger the process) and a scoring rubric, designed to be run by hand against real sessions. No run has been recorded yet - see `evals/README.md` for status and how to run one. Treat the "Why" and "How it works" sections above as the design intent, not a verified result, until real numbers land here.
+One full run has been scored (2026-07-29, all 20 scenarios - 15 seeded feature requests with known target vulnerabilities, plus 5 negative controls that must not trigger the process): **100% mitigation rate, 100% trigger precision, 0% noise rate**, and **8 self-introduced defects caught and fixed by the Phase 2 re-check across the 15 positive-scenario runs, with none surviving to the final report.**
+
+The clearest evidence that the process changes behavior, not just adds paperwork: in two scenarios where the feature request's literal wording *was* the vulnerable pattern ("the frontend sends the price," "update whatever fields are in the request body"), the baseline model (no PreFlight) built the vulnerability exactly as asked, while the PreFlight-guided run refused outright. Elsewhere the delta was narrower - baseline already gets many textbook-named vulnerability classes (SQL injection, XSS, SSRF) right unprompted, and PreFlight's added value there was depth (rate limiting, IP-pinning against DNS rebinding, idempotency) rather than the headline fix.
+
+Full per-scenario scoring, methodology, and caveats (this is one simulated run, not a large-sample eval) are in `evals/results/2026-07-29-simulated-claude-code/results.md`. See `evals/README.md` for how to run this against another tool/model.
 
 ## Notes
 

@@ -1,0 +1,11 @@
+{
+  "name": "eval-fixture-nextjs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Minimal Next.js App Router scratch project for the P13 eval scenario.",
+  "dependencies": {
+    "next": "^15.0.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0"
+  }
+}
